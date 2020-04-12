@@ -1,11 +1,10 @@
 from django import forms
-from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
-from django.template.context_processors import request
 from pyhunter import PyHunter
 
 from .models import User
+from .utils import clearbit_signup
 
 hunter = PyHunter(settings.EMAIL_HUNTER_API_KEY)
 
@@ -13,7 +12,7 @@ hunter = PyHunter(settings.EMAIL_HUNTER_API_KEY)
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('email', )
+        fields = ('email',)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -25,6 +24,7 @@ class SignUpForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_staff = True
+        user.name = clearbit_signup(user.email)
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()

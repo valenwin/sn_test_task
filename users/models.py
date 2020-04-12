@@ -33,8 +33,9 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
-    email = models.EmailField(max_length=255, unique=True, )
-    is_staff = models.BooleanField(_('staff status'), default=False, )
+    email = models.EmailField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, null=True)
+    is_staff = models.BooleanField(_('staff status'), default=False)
     is_active = models.BooleanField(_('active'), default=True)
     is_superuser = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
@@ -46,3 +47,6 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
         ordering = ['-created']
+
+    def __str__(self):
+        return self.email
