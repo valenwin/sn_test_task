@@ -1,15 +1,17 @@
 # Social Network
 
 ## Overview
-Basic models:
+Basic models:<br />
 - User
-- Post (always made by a user)
+- Post (always made by a user)<br />
+
 Basic features:
-- user signup
-- user login
+- user signup: **api/auth/signup**
+- user login: **api/auth/login**
 - post creation
 - post like
-- post unlike
+- post unlike<br />
+
 Requirements:
 - use hunter.io for verifying email existence on signup
 - use clearbit.com for getting additional data for the user on signup (user's full name)
