@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Sign In
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mx-auto">
+        <hr>
+        <h1 class="text-center">Login or Create New Account</h1>
+        <hr>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 mx-auto bg-light text-center">
+            <br>
+            <h2>New User?</h2>
+            <div>
+                <p>Please create an account for:</p>
+                <p>create/update/delete your posts</p>
+                <p>like/unlike other posts.</p>
+            </div>
+            <a href="{% url 'users:signup' %}" class="btn btn-primary base-btn">
+                Create account
+            </a>
+            <a href="http://127.0.0.1:8000/api/auth/signup/" class="btn btn-success base-btn">
+                API Create account
+            </a>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 mx-auto bg-light">
+        <div class="mx-auto">
+            <br>
+            <h2 class="text-center">Registered Customers Only</h2>
+            <div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>{{ form | crispy }}</p>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="http://127.0.0.1:8000/api/auth/login/" class="btn btn-success base-btn">
+                            API Login
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
