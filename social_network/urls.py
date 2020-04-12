@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
                   path('', admin.site.urls),
                   path('', include(('users.urls', 'users'), namespace='users')),
+                  path('', include(('posts.urls', 'posts'), namespace='posts')),
               ] \
               + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT)

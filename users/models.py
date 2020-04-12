@@ -3,7 +3,6 @@ from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_extensions.db.models import TimeStampedModel
 
 
 class CustomUserManager(BaseUserManager):
@@ -32,7 +31,7 @@ class CustomUserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255, null=True)
     is_staff = models.BooleanField(_('staff status'), default=False)

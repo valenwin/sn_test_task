@@ -8,9 +8,9 @@ Basic models:<br />
 Basic features:
 - user signup: **api/auth/signup**
 - user login: **api/auth/login**
-- post creation
-- post like
-- post unlike<br />
+- post creation: **api/posts**
+- post like: **api/posts/(?P<post_id>[0-9]+)/like**
+- post unlike: **api/posts/(?P<post_id>[0-9]+)/unlike**<br />
 
 Requirements:
 - use hunter.io for verifying email existence on signup
